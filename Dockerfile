@@ -8,4 +8,4 @@ RUN npm run build && mkdir -p .wrangler && chown -R node:node /app
 USER node
 ENV HOST=0.0.0.0 PORT=5173 WRANGLER_SEND_METRICS=false CLOUDFLARE_CF_FETCH_ENABLED=false
 EXPOSE 5173
-CMD ["npm", "start"]
+CMD ["node", "scripts/container-start.mjs"]

@@ -26,3 +26,5 @@ Keep PRs free of credentials and generated/private media. New sample content mus
 - Improve installer diagnostics without making paid test calls.
 - Add continuity evaluation fixtures with original reusable media.
 - Improve the self-hosting guide after a clean install on a different OS.
+
+The inherited `npm run lint` configuration currently reports existing dynamic-typing and React compiler lint debt. It is not a clean release gate yet. CI gates use the tests, TypeScript check, build, production dependency audit, release scan, and standalone/Docker smoke checks. Tightening lint without weakening behavior is welcome.

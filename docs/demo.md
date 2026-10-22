@@ -11,3 +11,9 @@ This is a walkthrough of the real self-hosted UI. No generated movie is bundled 
 7. Watch the finished concept film. Look for pacing opportunities as well as AI mistakes.
 
 For a zero-provider-cost verification, run `npm run test:workers`: it executes the real worker against intercepted provider fixtures and assembles synthetic clips with FFmpeg. It tests mechanics, not cinematic quality.
+
+## Actual interface
+
+![Desktop studio](images/studio-desktop.png)
+
+<img src="images/studio-mobile.png" alt="Mobile studio at 390 pixels wide" width="320">

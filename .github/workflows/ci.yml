@@ -41,5 +41,7 @@ jobs:
       - run: docker compose run --rm migrate
       - run: docker compose up -d --wait studio
       - run: node tests/self-host-smoke.mjs
+      - if: failure()
+        run: docker compose logs --no-color studio
       - if: always()
         run: docker compose down

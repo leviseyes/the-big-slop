@@ -14,6 +14,8 @@
 
 [Quick start](#quick-start) · [API key guide](docs/api-keys.md) · [Self-hosting](docs/self-hosting.md) · [Workflow](docs/workflow.md) · [Roadmap](ROADMAP.md) · [Contribute](CONTRIBUTING.md)
 
+<p align="center"><img src="docs/images/studio-desktop.png" alt="The real self-hosted studio with the original sample script" width="100%"></p>
+
 ## What you can do
 
 - Write, paste or import TXT, PDF, DOCX, Fountain and Final Draft scripts; develop an idea into a script.

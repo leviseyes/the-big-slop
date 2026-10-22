@@ -563,7 +563,7 @@ export default function Studio() {
             THE BIG
             <br />
             <b>SLOP</b>
-            <i>®</i>
+            
           </span>
         </a>
         <div className="workspace-label">YOUR PRODUCTION HOUSE</div>
