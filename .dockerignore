@@ -1,0 +1,17 @@
+node_modules
+.git
+.env*
+!.env.example
+.dev.vars*
+.studio-password
+.wrangler
+worker-state
+outputs
+work
+backups
+.release-audit
+dist
+.next
+*.log
+*.tsbuildinfo
+wrangler.production.jsonc

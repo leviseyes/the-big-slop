@@ -1,0 +1,8 @@
+import { env } from 'cloudflare:workers';
+import { configured, safeReturn } from '@/services/session.mjs';
+export const dynamic='force-dynamic';
+export default async function Login({searchParams}:{searchParams:Promise<Record<string,string>>}) {
+ const params=await searchParams;
+ const ready=configured(env);
+ return <main className="owner-login"><div className="owner-login-brand">THE BIG SLOP <span>SELF-HOSTED STUDIO</span></div><section className="owner-login-card"><span className="owner-login-label">YOUR PRODUCTION HOUSE</span><h1>Big ideas.<br/><em>Your own studio.</em></h1><p>Sign in to your private filmmaking workspace. Your scripts, your references, your creative decisions.</p>{ready?<form action="/api/auth/login" method="post"><input type="hidden" name="return_to" value={safeReturn(params.return_to)}/><label htmlFor="password">Studio password</label><input id="password" name="password" type="password" required minLength={20} maxLength={256} autoComplete="current-password" placeholder="Your studio access password"/>{params.error&&<p role="alert" className="owner-login-error">{params.error==='limited'?'Too many attempts. Please wait five minutes.':'Sign-in failed. Check your password and try again.'}</p>}<button type="submit">Enter the studio <span aria-hidden="true">→</span></button><small>Your password is in the .studio-password file created by setup.</small></form>:<div role="status"><strong>One small setup step.</strong><p>Run <code>npm run setup</code> in your installation, then restart the server. Sign-in stays disabled until authentication is configured.</p></div>}<footer>OPEN SOURCE. BEAUTIFULLY UNPREDICTABLE.</footer></section></main>;
+}

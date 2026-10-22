@@ -1,0 +1,1 @@
+CREATE INDEX `idx_productions_series_created` ON `productions` (`series_id`,`created`);

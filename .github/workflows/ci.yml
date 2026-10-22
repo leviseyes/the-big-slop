@@ -1,0 +1,45 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run check:release
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run test:workers
+      - run: npm run setup && npm run db:migrate && npm run build
+      - name: Test standalone studio
+        run: |
+          npm start > /tmp/studio.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:5173/login > /dev/null; then break; fi
+            sleep 2
+          done
+          npm run test:api
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node scripts/setup.mjs
+      - run: docker compose build
+      - run: docker compose run --rm migrate
+      - run: docker compose up -d --wait studio
+      - run: node tests/self-host-smoke.mjs
+      - if: always()
+        run: docker compose down

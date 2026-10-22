@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a reproducible studio problem.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include API keys, cookies, private scripts or production dumps. Use private security reporting for vulnerabilities."
+  - type: input
+    id: version
+    attributes:
+      label: Release version and installation type
+      placeholder: v0.1.0, Node local / Docker / Cloudflare, OS
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and sanitized error
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Minimal original example (optional)
